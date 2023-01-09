@@ -31,11 +31,11 @@
               <input name="select" (change)="select(cart)" type="checkbox">
             </td>
             <td>
-              <img [src]="cart.book.image" alt="pic"
+              <img [src]="cart.product.image" alt="pic"
                    style="height: 120px;  object-fit: contain">
             </td>
-            <td style="text-align: left">{{cart.book.name}}<br><br>
-              <p>{{cart.book.price | number}}</p></td>
+            <td style="text-align: left">{{cart.product.name}}<br><br>
+              <p>{{cart.product.price | number}}</p></td>
             <td>
               <div>
                 <!--                   <span class="px-2 d-flex justify-content-center align-items-center"-->
@@ -55,9 +55,9 @@
               </div>
             </td>
             <td>
-              <p class="product-price">{{cart.quantity * cart.book.price | number}}đ</p>
+              <p class="product-price">{{cart.quantity * cart.product.price | number}}đ</p>
             </td>
-            <td>v
+            <td>
               <img src="/assets/PIC/delete.png" alt="" style="height: 20px; object-fit: contain"
                    (click)="deleteCart(cart.id)">
             </td>
@@ -120,7 +120,7 @@
                             background-color: #C92127; color: white; font-weight: bold; font-size: 1.5rem;
                             border: none" *ngIf="selectCart.length >=1 "
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" (click)=" getOrderInfo()">Xác nhận đơn hàng
+                        data-bs-target="#exampleModal">Xác nhận đơn hàng
                 </button>
               </td>
             </tr>
@@ -136,68 +136,68 @@
   </div>
 </div>
 
-<!--        Modal View Order-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: black">Hóa Đơn Của Bạn</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" >
-        <label class="col-form-label lab">Tên Tài Khoản</label>
-        <input id="deleteName" class="form-control" readonly [(ngModel)]="customerUserName">
-        <label class="col-form-label lab">Phương thức giao hàng</label>
-        <div>
-          <input class="form-control" value="Giao Hàng Tiêu Chuẩn" name="shipping"
-                 *ngIf="orderForm.value.shippingMethod == 1"
-                 disabled>
-          <input class="form-control" value="Giao Hàng Nhanh" name="shipping"
-                 *ngIf="orderForm.value.shippingMethod == 2"
-                 disabled>
-          <input class="form-control" value="Giao Hàng Hỏa Tốc" name="shipping"
-                 *ngIf="orderForm.value.shippingMethod  == 3"
-                 disabled>
-          <input class="form-control" value="Giao Hàng Máy Bay" name="shipping"
-                 *ngIf="orderForm.value.shippingMethod == 4"
-                 disabled>
-        </div>
-        <label class="col-form-label lab">Ngày Tạo Hóa Đơn</label>
-        <input id="dateProcess" class="form-control" readonly [value]="dateOrderProcess | date: 'yyyy-MM-dd'">
-        <label class="col-form-label lab">Hình Thức Thanh Toán</label>
-        <input id="payment" class="form-control" readonly [value]="orderForm.value.paymentMethod" >
-        <label class="col-form-label lab">Danh sách Sản Phẩm Đã Chọn</label>
-        <table class="table-modal" style="border: green 1px">
-          <thead style="border: green 1px; text-align: center">
-          <tr>
-            <td>Sản Phẩm</td>
-            <td>Tên Sản Phẩm</td>
-            <td>Số Lượng</td>
-          </tr>
-          </thead>
-          <tbody *ngFor="let item of selectCart" style="border: green 1px; text-align: center" >
-          <tr>
-            <td style="text-align: center">
-              <img [src]="item.book.image" alt="pic" style="object-fit: contain; height: 50px">
-            </td>
-            <td style="text-align: left;">
-              {{item.book.name}}
-            </td>
-            <td style="text-align: center">
-              {{item.quantity}}
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="button btnRed redBorder" data-bs-dismiss="modal" (click)="normalPayment()" >
-          Xác nhận mua hàng
-        </button>
-        <button type="button" class="mx-2 button btnYellow yellowBorder " data-bs-dismiss="modal">Quay Lại
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--&lt;!&ndash;        Modal View Order&ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel" style="color: black">Hóa Đơn Của Bạn</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body" >-->
+<!--        <label class="col-form-label lab">Tên Tài Khoản</label>-->
+<!--        <input id="deleteName" class="form-control" readonly [(ngModel)]="customerUserName">-->
+<!--        <label class="col-form-label lab">Phương thức giao hàng</label>-->
+<!--        <div>-->
+<!--          <input class="form-control" value="Giao Hàng Tiêu Chuẩn" name="shipping"-->
+<!--                 *ngIf="orderForm.value.shippingMethod == 1"-->
+<!--                 disabled>-->
+<!--          <input class="form-control" value="Giao Hàng Nhanh" name="shipping"-->
+<!--                 *ngIf="orderForm.value.shippingMethod == 2"-->
+<!--                 disabled>-->
+<!--          <input class="form-control" value="Giao Hàng Hỏa Tốc" name="shipping"-->
+<!--                 *ngIf="orderForm.value.shippingMethod  == 3"-->
+<!--                 disabled>-->
+<!--          <input class="form-control" value="Giao Hàng Máy Bay" name="shipping"-->
+<!--                 *ngIf="orderForm.value.shippingMethod == 4"-->
+<!--                 disabled>-->
+<!--        </div>-->
+<!--        <label class="col-form-label lab">Ngày Tạo Hóa Đơn</label>-->
+<!--        <input id="dateProcess" class="form-control" readonly [value]="dateOrderProcess | date: 'yyyy-MM-dd'">-->
+<!--        <label class="col-form-label lab">Hình Thức Thanh Toán</label>-->
+<!--        <input id="payment" class="form-control" readonly [value]="orderForm.value.paymentMethod" >-->
+<!--        <label class="col-form-label lab">Danh sách Sản Phẩm Đã Chọn</label>-->
+<!--        <table class="table-modal" style="border: green 1px">-->
+<!--          <thead style="border: green 1px; text-align: center">-->
+<!--          <tr>-->
+<!--            <td>Sản Phẩm</td>-->
+<!--            <td>Tên Sản Phẩm</td>-->
+<!--            <td>Số Lượng</td>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody *ngFor="let item of selectCart" style="border: green 1px; text-align: center" >-->
+<!--          <tr>-->
+<!--            <td style="text-align: center">-->
+<!--              <img [src]="item.book.image" alt="pic" style="object-fit: contain; height: 50px">-->
+<!--            </td>-->
+<!--            <td style="text-align: left;">-->
+<!--              {{item.book.name}}-->
+<!--            </td>-->
+<!--            <td style="text-align: center">-->
+<!--              {{item.quantity}}-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="button btnRed redBorder" data-bs-dismiss="modal" (click)="normalPayment()" >-->
+<!--          Xác nhận mua hàng-->
+<!--        </button>-->
+<!--        <button type="button" class="mx-2 button btnYellow yellowBorder " data-bs-dismiss="modal">Quay Lại-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 

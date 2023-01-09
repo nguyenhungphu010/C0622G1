@@ -40,40 +40,39 @@
     </div>
   </div>
   <!--Danh sách đầu sách kinh tế-->
-  <!--  <div class="row body">-->
-  <!--    <div class="category-header">-->
-  <!--      <div class="category-icon">-->
-  <!--        <img src="/assets/PIC/categories.png" style="height: 35px; object-fit: contain; padding-left: 8px">-->
-  <!--      </div>-->
-  <!--      <div class="category-title ">-->
-  <!--                  <span><p-->
-  <!--                    style="font-family: nunito-sans, sans-serif ; font-weight: bold; font-size: 1.6em; color: #212121">Sách Kinh tế</p></span>-->
-  <!--      </div>-->
-  <!--    </div>-->
+  <div class="row body">
+    <div class="category-header">
+      <div class="category-icon">
+        <img src="/assets/PIC/categories.png" style="height: 35px; object-fit: contain; padding-left: 8px">
+      </div>
+      <div class="category-title ">
+                    <span><p
+                      style="font-family: nunito-sans, sans-serif ; font-weight: bold; font-size: 1.6em; color: #212121">Sản Phẩm Mới</p></span>
+      </div>
+    </div>
 
-  <!--    <div class="row book-container " *ngIf="action">-->
-  <!--      <div class="col-lg-1"></div>-->
-  <!--      <div class="col-lg-10">-->
-  <!--        <div class="row" *ngFor="let item of bookList" style="float: left">-->
-  <!--          <div class="card col-lg-2">-->
-  <!--            <img src="{{item.image}}" class="card-img-top" alt="...">-->
-  <!--            <div class="card-body">-->
-  <!--              <h5 class="card-title">{{item.name}}</h5>-->
-  <!--              <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
-  <!--                the-->
-  <!--                card's content.</p>-->
-  <!--              <span class="product-price">{{item.price}}đ</span>-->
-  <!--              <a href="#" class="btn btn-primary" routerLink="/home/detail/{{item.id}}">Xem chi tiết</a>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--      <div class="col-lg-1"></div>-->
+    <div class="row book-container d-flex " *ngIf="action">
 
-  <!--      <button  style="width: 10%" *ngIf="pageSize < 16" (click)="loadMore()">Xem thêm</button>-->
-  <!--      <button  style="width: 10%" *ngIf="pageSize > 5 " (click)="loadLess()">Thu gọn</button>-->
-  <!--    </div>-->
-  <!--  </div>-->
+
+      <div class="card" *ngFor="let item of productList" style="float: left">
+        <img src="{{item.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.taste}}</p>
+          <span class="product-price">{{item.price}}đ</span>
+          <a href="#" class="btn btn-primary" routerLink="/home/detail/{{item.id}}">Xem chi tiết</a>
+        </div>
+      </div>
+
+
+      <button style="width: 10%; background-color: grey; margin-top: 20px" class="btn" *ngIf="pageSize < 10"
+              (click)="loadMore()">Xem thêm
+      </button>
+      <button style="width: 10%; background-color: grey;  margin-top: 20px " class="btn" *ngIf="pageSize > 5 "
+              (click)="loadLess()">Thu gọn
+      </button>
+    </div>
+  </div>
   <!--Danh sách đầu sách Văn học-->
   <div class=" row body">
     <div class="category-header">

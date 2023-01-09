@@ -39,13 +39,13 @@
           <a routerLink="/home/cart">
             <img src="/assets/PIC/shopping-cart.png" style="height: 25px"></a>
         </div>
-        <div class="col-4" >
+        <div class="col-4" *ngIf="isLogin== '' ">
           <a routerLink="/login">
             <img src="/assets/PIC/user.png" style="height: 25px">
           </a>
         </div>
-        <div class="col-4">
-          <a >
+        <div class="col-4" *ngIf="isLogin == 'login'">
+          <a (click)="logOut()" >
             <img src="/assets/PIC/logout.png" style="height: 25px">
           </a>
         </div>
@@ -62,10 +62,10 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/book/list">Sản Phẩm</a>
     </li>
-    <li class="nav-item" >
+    <li class="nav-item" *ngIf="isEmployee || isAdmin">
       <a class="nav-link" routerLink="/customer/list">Khách hàng</a>
     </li>
-    <li class="nav-item" >
+    <li class="nav-item" *ngIf="isAdmin">
     <a class="nav-link disabled" routerLink="/order/list" tabindex="-1" aria-disabled="true">Quản Lý Đơn Hàng</a>
     </li>
   </ul>

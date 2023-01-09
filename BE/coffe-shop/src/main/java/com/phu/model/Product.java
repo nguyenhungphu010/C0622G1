@@ -15,7 +15,7 @@ public class Product {
     private String image;
     @Column(name = "weight")
     private Integer weight;
-    private Integer taste;
+    private String taste;
     private String unit;
     private Double price;
     private Integer stock;
@@ -31,7 +31,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String name, String image, Integer weight, Integer taste, String unit, Double price, Integer stock, String ingredient, boolean isDelete, ProductType productType) {
+    public Product(Integer id, String name, String image, Integer weight, String taste, String unit, Double price, Integer stock, String ingredient, boolean isDelete, ProductType productType) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -77,11 +77,11 @@ public class Product {
         this.weight = weight;
     }
 
-    public Integer getTaste() {
+    public String getTaste() {
         return taste;
     }
 
-    public void setTaste(Integer taste) {
+    public void setTaste(String taste) {
         this.taste = taste;
     }
 
