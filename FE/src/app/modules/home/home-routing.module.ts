@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {ProductListComponent} from './product-list/product-list.component';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
 import {CartComponent} from './cart/cart.component';
+import {AuthGuard} from '../security/auth.guard';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   },
   {
     path: 'cart', component: CartComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN', 'ROLE_CUSTOMER', 'ROLE_EMPLOYEE']
+    }
   }
 ];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeModule} from './modules/home/home.module';
 import {SecurityModule} from './modules/security/security.module';
+import {CustomerModule} from './modules/customer/customer.module';
 
 
 const routes: Routes = [
@@ -10,6 +11,9 @@ const routes: Routes = [
   },
   {
     path: 'login', loadChildren: () => SecurityModule,
+  },
+  {
+    path: 'customer', loadChildren: () => CustomerModule,
   }
 ];
 
